@@ -17,9 +17,9 @@ public class PageAuthentication {
     private By caixaTextoLastName = By.xpath("//*[@id=\"customer_lastname\"]");
     private By caixaTextoEmailCadastro = By.xpath("//*[@id=\"email\"]");
     private By caixaTextoPassword = By.xpath("//*[@id=\"passwd\"]");
-    private By formularioDateBirthDia = By.xpath("//*[@id=\"days\"]");
-    private By formularioDateBirthMes = By.xpath("//*[@id=\"months\"]");
-    private By formularioDateBirthAno = By.xpath("//*[@id=\"years\"]");
+    private By formularioDateBirthDia = By.cssSelector("#days");
+    private By formularioDateBirthMes = By.cssSelector("#months");
+    private By formularioDateBirthAno = By.cssSelector("#years");
     private By checkyBoxNewsLetter = By.xpath("//*[@id=\"newsletter\"]");
     private By checkBoxSpecialOffer = By.xpath("//*[@id=\"optin\"]");
     private By caixaTextoFirstName2 = By.xpath("//*[@id=\"firstname\"]");
@@ -28,9 +28,9 @@ public class PageAuthentication {
     private By caixaTextoAddress = By.xpath("//*[@id=\"address1\"]");
     private By caixaTextoAddressLine2 = By.xpath("//*[@id=\"address2\"]");
     private By caixaTextoCity = By.xpath("//*[@id=\"city\"]");
-    private By comboBoxState = By.xpath("//*[@id=\"id_state\"]");
+    private By comboBoxState = By.cssSelector("#id_state");
     private By caixaTextoPostalCode = By.xpath("//*[@id=\"postcode\"]"); //5 digitos
-    private By comboBoxCountry = By.xpath("//*[@id=\"id_country\"]");
+    private By comboBoxCountry = By.cssSelector("#id_country");
     private By caixaTextoAdditionalInformation = By.xpath("//*[@id=\"other\"]");
     private By caixaTextoHomePhone = By.xpath("//*[@id=\"phone\"]");
     private By caixaTextoMobilePhone = By.xpath("//*[@id=\"phone_mobile\"]");
@@ -80,8 +80,105 @@ public class PageAuthentication {
         return this;
     }
 
-    public PageAuthentication clickBirthDateDia(int dia){
-        driver.findElement(By.cssSelector(getFormularioDateBirthDia()))
+    //Precisa refatorar
+    public PageAuthentication clickBirthDateDia(String dia){
+        driver.findElement(getFormularioDateBirthDia()).sendKeys(dia);
+        return this;
+    }
+
+    public PageAuthentication clickBirthDateMes(String mes){
+        driver.findElement(getFormularioDateBirthMes()).sendKeys(mes);
+        return this;
+    }
+
+    public PageAuthentication clickBirthDateAno(String ano){
+        driver.findElement(getFormularioDateBirthAno()).sendKeys(ano);
+        return this;
+    }
+
+
+    public PageAuthentication clickCheckyBoxNewsLetter(){
+        driver.findElement(getCheckyBoxNewsLetter()).click();
+        return this;
+    }
+
+    public PageAuthentication clickCheckBoxSpecialOffer(){
+        driver.findElement(getCheckBoxSpecialOffer()).click();
+        return this;
+    }
+
+    public PageAuthentication preencherFirstName2(String firstName){
+        driver.findElement(getCaixaTextoFirstName2()).sendKeys(firstName);
+        return this;
+    }
+
+    public PageAuthentication preencherLastName2(String lastName){
+        driver.findElement(getCaixaTextoLastName2()).sendKeys(lastName);
+        return this;
+    }
+
+    public PageAuthentication preencherCompany(String company){
+        driver.findElement(getCaixaTextoCompany()).sendKeys(company);
+        return this;
+    }
+
+    public PageAuthentication preencherAddress(String address){
+        driver.findElement(getCaixaTextoAddress()).sendKeys(address);
+        return this;
+    }
+
+    public PageAuthentication preencherAddressLine2(String addressLine){
+        driver.findElement(getCaixaTextoAddressLine2()).sendKeys(addressLine);
+        return this;
+    }
+
+    public PageAuthentication preencherCity(String city){
+        driver.findElement(getCaixaTextoCity()).sendKeys(city);
+        return this;
+    }
+
+
+    public PageAuthentication preencherState(String state){
+         driver.findElement(getComboBoxState()).sendKeys(state);
+         return this;
+     }
+
+
+    public PageAuthentication peencherPostalCode(String postalCode){
+        driver.findElement(getCaixaTextoPostalCode()).sendKeys(postalCode);
+        return this;
+    }
+
+
+    public PageAuthentication preencherCountry(String country){
+        driver.findElement(getComboBoxCountry()).sendKeys(country);
+        return this;
+    }
+
+
+    public PageAuthentication preencherAdditionalInformation(String information){
+        driver.findElement(getCaixaTextoAdditionalInformation()).sendKeys(information);
+        return this;
+    }
+
+    public PageAuthentication preencherHomePhone(String phone){
+        driver.findElement(getCaixaTextoHomePhone()).sendKeys(phone);
+        return this;
+    }
+
+    public PageAuthentication preencherMobilePhone(String mobile){
+        driver.findElement(getCaixaTextoMobilePhone()).sendKeys(mobile);
+        return this;
+    }
+
+    public PageAuthentication preencherLabelAdress(String labelAdress){
+        driver.findElement(getCaixaTextoLabelAddress()).sendKeys(labelAdress);
+        return this;
+    }
+
+    public PageAuthentication clickButtonRegister(){
+        driver.findElement(getButtonRegister()).click();
+        return this;
     }
 
     public String getLinkSignIn() {
