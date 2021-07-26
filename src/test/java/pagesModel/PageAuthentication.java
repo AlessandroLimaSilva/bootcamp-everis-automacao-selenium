@@ -1,14 +1,16 @@
 package pagesModel;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 public class PageAuthentication {
 
+    private WebDriver driver;
     private String linkSignIn = "http://automationpractice.com/index.php?controller=authentication&back=my-account";
     private String linkAccountCreation = "http://automationpractice.com/index.php?controller=authentication&back=my-account#account-creation";
 
     private By caixaTextoEmail = By.xpath("//*[@id=\"email_create\"]");
-    private By createAnAccount = By.xpath("//*[@id=\"SubmitCreate\"]");
+    private By buttonCreateAnAccount = By.xpath("//*[@id=\"SubmitCreate\"]");
     private By radioMr = By.xpath("/html/body/div/div[2]/div/div[3]/div/div/form/div[1]/div[1]/div[1]/label");
     private By radioMs = By.xpath("/html/body/div/div[2]/div/div[3]/div/div/form/div[1]/div[1]/div[2]/label");
     private By caixaTextoFirstName = By.xpath("//*[@id=\"customer_firstname\"]");
@@ -36,7 +38,51 @@ public class PageAuthentication {
     private By buttonRegister = By.xpath("//*[@id=\"submitAccount\"]");
 
 
+    public PageAuthentication(WebDriver driver){this.driver = driver;}
 
+    public PageAuthentication clickCreateAccount(){
+        driver.findElement(getButtonCreateAnAccount()).click();
+        return this;
+    }
+
+    public PageAuthentication preencherEmail(String email){
+        driver.findElement(getCaixaTextoEmail());
+        return this;
+    }
+
+    public PageAuthentication clickRadioMr(){
+        driver.findElement(getRadioMr()).click();
+        return this;
+    }
+
+    public PageAuthentication clickRadioMs(){
+        driver.findElement(getRadioMs()).click();
+        return this;
+    }
+
+    public PageAuthentication preencherFirstName(String firstName){
+        driver.findElement(getCaixaTextoFirstName()).sendKeys(firstName);
+        return this;
+    }
+
+    public PageAuthentication preencherLastName(String lastName){
+        driver.findElement(getCaixaTextoLastName()).sendKeys(lastName);
+        return this;
+    }
+
+    public PageAuthentication preencherEmailCadastro(String email){
+        driver.findElement(getCaixaTextoEmailCadastro()).sendKeys(email);
+        return this;
+    }
+
+    public PageAuthentication preencherPassword(String password){
+        driver.findElement(getCaixaTextoPassword()).sendKeys(password);
+        return this;
+    }
+
+    public PageAuthentication clickBirthDateDia(int dia){
+        driver.findElement(By.cssSelector(getFormularioDateBirthDia()))
+    }
 
     public String getLinkSignIn() {
         return linkSignIn;
@@ -50,8 +96,8 @@ public class PageAuthentication {
         return caixaTextoEmail;
     }
 
-    public By getCreateAnAccount() {
-        return createAnAccount;
+    public By getButtonCreateAnAccount() {
+        return buttonCreateAnAccount;
     }
 
     public By getRadioMr() {
