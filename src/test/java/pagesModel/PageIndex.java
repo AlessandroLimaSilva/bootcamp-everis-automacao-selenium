@@ -19,7 +19,7 @@ public class PageIndex {
         return linkIndex;
     }
 
-    public PageIndex acessarTelaIndex(){
+    public PageIndex acessarTelaPageIndex(){
         driver.get(getLinkIndex());
         return this;
     }
