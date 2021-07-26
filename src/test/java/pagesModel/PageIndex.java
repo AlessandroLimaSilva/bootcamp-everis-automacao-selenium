@@ -1,14 +1,15 @@
 package pagesModel;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 public class PageIndex {
 
-    //Links utilizados na pagina
+    private WebDriver driver;
     private String linkIndex = "http://automationpractice.com/index.php";
-
-    //Endereços de componentes da pagina index
     private By buttonSignin = By.xpath("/html/body/div/div[1]/header/div[2]/div/div/nav/div[1]/a");
+
+    public PageIndex(WebDriver driver){this.driver = driver;}
 
     public By getButtonSignin() {
         return buttonSignin;
@@ -16,5 +17,15 @@ public class PageIndex {
 
     public String getLinkIndex() {
         return linkIndex;
+    }
+
+    public PageIndex acessarTelaIndex(){
+        driver.get(getLinkIndex());
+        return this;
+    }
+
+    public PageIndex clickButtonSign(){
+        driver.findElement(getButtonSignin()).click();
+        return this;
     }
 }

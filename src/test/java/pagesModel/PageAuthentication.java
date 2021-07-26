@@ -35,6 +35,9 @@ public class PageAuthentication {
     private By caixaTextoLabelAddress = By.xpath("//*[@id=\"alias\"]");
     private By buttonRegister = By.xpath("//*[@id=\"submitAccount\"]");
 
+
+
+
     public String getLinkSignIn() {
         return linkSignIn;
     }
