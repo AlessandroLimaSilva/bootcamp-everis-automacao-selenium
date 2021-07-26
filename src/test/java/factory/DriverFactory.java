@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class DriverFactory {
 
     private static final String chromeDriver = "webdriver.chrome.driver";
-    private static final String pathChrome = "";
+    private static final String pathChrome = "src/test/java/driver/";
 
     public DriverFactory(){}
 
