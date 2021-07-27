@@ -3,12 +3,14 @@ package tests;
 import factory.DriverFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pagesModel.PageAuthentication;
 import pagesModel.PageIndex;
+import pagesModel.PageMyAccount;
 import pagesModel.PageUsuario;
 
 import java.io.IOException;
@@ -17,6 +19,7 @@ public class CadastrarUsuarioTest {
 
     private static PageIndex index;
     private static PageAuthentication authentication;
+    private static PageMyAccount account;
     private WebDriver driver;
     private WebDriverWait wait;
 
@@ -36,6 +39,7 @@ public class CadastrarUsuarioTest {
 
         index = new PageIndex(driver);
         authentication = new PageAuthentication(driver);
+        account = new PageMyAccount(driver);
         index.acessarTelaPageIndex();
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(index.getButtonSignin()));
         Assertions.assertEquals(index.getLinkIndex(), driver.getCurrentUrl());
@@ -45,8 +49,6 @@ public class CadastrarUsuarioTest {
                 visibilityOfAllElementsLocatedBy(authentication.getButtonCreateAnAccount()));
         authentication.preencherEmail(user.getEmail()).clickCreateAccount();
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(authentication.getButtonRegister()));
-
-        //Assertions.assertEquals(authentication.getLinkAccountCreation(),driver.getCurrentUrl());
 
         authentication.clickRadioMr().
                 preencherFirstName(user.getUserFirstName()).
@@ -62,10 +64,12 @@ public class CadastrarUsuarioTest {
                 peencherPostalCode(user.getPostalCode()).
                 preencherCountry(user.getCountry()).
                 preencherHomePhone(user.getHomePhone()).
-                preencherMobilePhone(user.getMobilePhone()).
-                clickButtonRegister();
+                preencherMobilePhone(user.getMobilePhone());
+                /*clickButtonRegister();*/
 
+
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(account.getButtonSignOut()));
         Assertions.assertEquals(authentication.getLinkAccountCreation(),driver.getCurrentUrl());
-
+        Assertions.assertEquals(account.getLinkMyAccount(),driver.getCurrentUrl());
     }
 }
