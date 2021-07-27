@@ -9,33 +9,33 @@ public class PageAuthentication {
     private String linkSignIn = "http://automationpractice.com/index.php?controller=authentication&back=my-account";
     private String linkAccountCreation = "http://automationpractice.com/index.php?controller=authentication&back=my-account#account-creation";
 
-    private By caixaTextoEmail = By.xpath("//*[@id=\"email_create\"]");
-    private By buttonCreateAnAccount = By.xpath("//*[@id=\"SubmitCreate\"]");
+    private By caixaTextoEmail = By.xpath("//*[@id=\'email_create\']");//*[@id="email_create"]
+    private By buttonCreateAnAccount = By.xpath("//*[@id=\'SubmitCreate\']");
     private By radioMr = By.xpath("/html/body/div/div[2]/div/div[3]/div/div/form/div[1]/div[1]/div[1]/label");
     private By radioMs = By.xpath("/html/body/div/div[2]/div/div[3]/div/div/form/div[1]/div[1]/div[2]/label");
-    private By caixaTextoFirstName = By.xpath("//*[@id=\"customer_firstname\"]");
-    private By caixaTextoLastName = By.xpath("//*[@id=\"customer_lastname\"]");
-    private By caixaTextoEmailCadastro = By.xpath("//*[@id=\"email\"]");
-    private By caixaTextoPassword = By.xpath("//*[@id=\"passwd\"]");
+    private By caixaTextoFirstName = By.xpath("//*[@id=\'customer_firstname\']");
+    private By caixaTextoLastName = By.xpath("//*[@id=\'customer_lastname\']");
+    private By caixaTextoEmailCadastro = By.xpath("//*[@id=\'email\']");
+    private By caixaTextoPassword = By.xpath("//*[@id=\'passwd\']");
     private By formularioDateBirthDia = By.cssSelector("#days");
     private By formularioDateBirthMes = By.cssSelector("#months");
     private By formularioDateBirthAno = By.cssSelector("#years");
-    private By checkyBoxNewsLetter = By.xpath("//*[@id=\"newsletter\"]");
-    private By checkBoxSpecialOffer = By.xpath("//*[@id=\"optin\"]");
-    private By caixaTextoFirstName2 = By.xpath("//*[@id=\"firstname\"]");
-    private By caixaTextoLastName2 = By.xpath("//*[@id=\"lastname\"]");
-    private By caixaTextoCompany = By.xpath("//*[@id=\"company\"]");
-    private By caixaTextoAddress = By.xpath("//*[@id=\"address1\"]");
-    private By caixaTextoAddressLine2 = By.xpath("//*[@id=\"address2\"]");
-    private By caixaTextoCity = By.xpath("//*[@id=\"city\"]");
+    private By checkyBoxNewsLetter = By.xpath("//*[@id=\'newsletter\']");
+    private By checkBoxSpecialOffer = By.xpath("//*[@id=\'optin\']");
+    private By caixaTextoFirstName2 = By.xpath("//*[@id=\'firstname\']");
+    private By caixaTextoLastName2 = By.xpath("//*[@id=\'lastname\']");
+    private By caixaTextoCompany = By.xpath("//*[@id=\'company\']");
+    private By caixaTextoAddress = By.xpath("//*[@id=\'address1\']");
+    private By caixaTextoAddressLine2 = By.xpath("//*[@id=\'address2\']");
+    private By caixaTextoCity = By.xpath("//*[@id=\'city\']");
     private By comboBoxState = By.cssSelector("#id_state");
-    private By caixaTextoPostalCode = By.xpath("//*[@id=\"postcode\"]"); //5 digitos
+    private By caixaTextoPostalCode = By.xpath("//*[@id=\'postcode\']"); //5 digitos
     private By comboBoxCountry = By.cssSelector("#id_country");
-    private By caixaTextoAdditionalInformation = By.xpath("//*[@id=\"other\"]");
-    private By caixaTextoHomePhone = By.xpath("//*[@id=\"phone\"]");
-    private By caixaTextoMobilePhone = By.xpath("//*[@id=\"phone_mobile\"]");
-    private By caixaTextoLabelAddress = By.xpath("//*[@id=\"alias\"]");
-    private By buttonRegister = By.xpath("//*[@id=\"submitAccount\"]");
+    private By caixaTextoAdditionalInformation = By.xpath("//*[@id=\'other\']");
+    private By caixaTextoHomePhone = By.xpath("//*[@id=\'phone\']");
+    private By caixaTextoMobilePhone = By.xpath("//*[@id=\'phone_mobile\']");
+    private By caixaTextoLabelAddress = By.xpath("//*[@id=\'alias\']");
+    private By buttonRegister = By.xpath("//*[@id=\'submitAccount\']");
 
 
     public PageAuthentication(WebDriver driver){this.driver = driver;}
@@ -46,7 +46,7 @@ public class PageAuthentication {
     }
 
     public PageAuthentication preencherEmail(String email){
-        driver.findElement(getCaixaTextoEmail());
+        driver.findElement(getCaixaTextoEmail()).sendKeys(email);
         return this;
     }
 

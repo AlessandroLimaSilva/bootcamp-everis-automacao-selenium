@@ -6,9 +6,9 @@ public class PageUsuario {
     private String userLastName;
     private String password;
     private String email;
-    private int diaNascimento;
-    private int mesNascimento;
-    private int anoNascimento;
+    private String diaNascimento;
+    private String mesNascimento;
+    private String anoNascimento;
     private boolean newLetter;
     private boolean specialOfter;
     private String firstName2;
@@ -17,12 +17,37 @@ public class PageUsuario {
     private String address;
     private String addressLine2;
     private String city;
-    private int state;
+    private String state;
     private String postalCode;
-    private int country;
+    private String country;
     private String additionalInformation;
     private String homePhone;
     private String mobilePhone;
+
+    public PageUsuario(String userFirstName,String userLastName,String password,
+                       String email,String diaNascimento,String mesNascimento,
+                       String anoNascimento,String company,String address,
+                       String city,String state,String postalCode,
+                       String country,String homePhone,String mobilePhone){
+
+        this.userFirstName = userFirstName;
+        this.userLastName = userLastName;
+        this.password = password;
+        this.email = email;
+        this.diaNascimento = diaNascimento;
+        this.mesNascimento = mesNascimento;
+        this.anoNascimento = anoNascimento;
+        this.company = company;
+        this.address = address;
+        this.city = city;
+        this.state = state;
+        this.postalCode = postalCode;
+        this.country = country;
+        this.homePhone = homePhone;
+        this.mobilePhone = mobilePhone;
+    }
+
+
 
     public String getUserFirstName() {
         return userFirstName;
@@ -56,27 +81,27 @@ public class PageUsuario {
         this.email = email;
     }
 
-    public int getDiaNascimento() {
+    public String getDiaNascimento() {
         return diaNascimento;
     }
 
-    public void setDiaNascimento(int diaNascimento) {
+    public void setDiaNascimento(String diaNascimento) {
         this.diaNascimento = diaNascimento;
     }
 
-    public int getMesNascimento() {
+    public String getMesNascimento() {
         return mesNascimento;
     }
 
-    public void setMesNascimento(int mesNascimento) {
+    public void setMesNascimento(String mesNascimento) {
         this.mesNascimento = mesNascimento;
     }
 
-    public int getAnoNascimento() {
+    public String getAnoNascimento() {
         return anoNascimento;
     }
 
-    public void setAnoNascimento(int anoNascimento) {
+    public void setAnoNascimento(String anoNascimento) {
         this.anoNascimento = anoNascimento;
     }
 
@@ -144,11 +169,11 @@ public class PageUsuario {
         this.city = city;
     }
 
-    public int getState() {
+    public String getState() {
         return state;
     }
 
-    public void setState(int state) {
+    public void setState(String state) {
         this.state = state;
     }
 
@@ -160,11 +185,11 @@ public class PageUsuario {
         this.postalCode = postalCode;
     }
 
-    public int getCountry() {
+    public String getCountry() {
         return country;
     }
 
-    public void setCountry(int country) {
+    public void setCountry(String country) {
         this.country = country;
     }
 
