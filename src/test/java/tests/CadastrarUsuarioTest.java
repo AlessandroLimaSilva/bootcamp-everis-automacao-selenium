@@ -3,23 +3,21 @@ package tests;
 import factory.DriverFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pagesModel.PageAuthentication;
 import pagesModel.PageIndex;
 import pagesModel.PageMyAccount;
 import pagesModel.PageUsuario;
-
-import java.io.IOException;
+import utils.Utils;
 
 public class CadastrarUsuarioTest {
 
     private static PageIndex index;
     private static PageAuthentication authentication;
     private static PageMyAccount account;
+    private static Utils utils;
     private WebDriver driver;
     private WebDriverWait wait;
 
@@ -32,7 +30,7 @@ public class CadastrarUsuarioTest {
                 "abcdefg",
                 "alessandrosilva@aluno.saojudas.br",
                 "3","March","1986",
-                "sao judas","Street SA","California","Hawai",
+                "sao judas","Street SA","New York","Hawai",
                 "00007","United States",
                 "11111111111","22222222222"
         );
@@ -40,32 +38,37 @@ public class CadastrarUsuarioTest {
         index = new PageIndex(driver);
         authentication = new PageAuthentication(driver);
         account = new PageMyAccount(driver);
-        index.acessarTelaPageIndex();
+        utils = new Utils(driver);
+        utils.acessarTela(index.getLinkIndex());
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(index.getButtonSignin()));
         Assertions.assertEquals(index.getLinkIndex(), driver.getCurrentUrl());
-        index.clickButtonSign();
+        utils.clickButtonId(index.getButtonSignin());
 
         wait.until(ExpectedConditions.
                 visibilityOfAllElementsLocatedBy(authentication.getButtonCreateAnAccount()));
-        authentication.preencherEmail(user.getEmail()).clickCreateAccount();
+
+        utils.preencherCampo(authentication.getCaixaTextoEmail(),user.getEmail()).
+                clickButtonId(authentication.getButtonCreateAnAccount());
+
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(authentication.getButtonRegister()));
 
-        authentication.clickRadioMr().
-                preencherFirstName(user.getUserFirstName()).
-                preencherLastName(user.getUserLastName()).
-                preencherPassword(user.getPassword()).
-                clickBirthDateDia(user.getDiaNascimento()).
-                clickBirthDateMes(user.getMesNascimento()).
-                clickBirthDateAno(user.getAnoNascimento()).
-                preencherCompany(user.getCompany()).
-                preencherAddress(user.getAddress()).
-                preencherCity(user.getCity()).
-                preencherState(user.getState()).
-                peencherPostalCode(user.getPostalCode()).
-                preencherCountry(user.getCountry()).
-                preencherHomePhone(user.getHomePhone()).
-                preencherMobilePhone(user.getMobilePhone());
-                /*clickButtonRegister();*/
+        utils.clickButtonId(authentication.getRadioMr()).
+                preencherCampo(authentication.getCaixaTextoFirstName(), user.getUserFirstName()).
+                preencherCampo(authentication.getCaixaTextoLastName(),user.getUserLastName()).
+                preencherCampo(authentication.getCaixaTextoPassword(),user.getPassword()).
+                clickEnviarTextoCss(authentication.getFormularioDateBirthDia(),user.getDiaNascimento()).
+                clickEnviarTextoCss(authentication.getFormularioDateBirthMes(), user.getMesNascimento()).
+                clickEnviarTextoCss(authentication.getFormularioDateBirthAno(),user.getAnoNascimento()).
+                preencherCampo(authentication.getCaixaTextoCompany(), user.getCompany()).
+                preencherCampo(authentication.getCaixaTextoAddress(),user.getAddress()).
+                clickEnviarTexto(authentication.getCaixaTextoCity(),user.getCity()).
+                clickEnviarTexto(authentication.getComboBoxState(),user.getState()).
+                preencherCampo(authentication.getCaixaTextoPostalCode(),user.getPostalCode()).
+                clickEnviarTexto(authentication.getComboBoxCountry(),user.getCountry()).
+                preencherCampo(authentication.getCaixaTextoHomePhone(),user.getHomePhone()).
+                preencherCampo(authentication.getCaixaTextoMobilePhone(),user.getMobilePhone());
+
+                //clickButtonRegister();
 
 
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(account.getButtonSignOut()));

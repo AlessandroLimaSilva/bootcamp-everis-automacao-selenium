@@ -19,13 +19,4 @@ public class PageIndex {
         return linkIndex;
     }
 
-    public PageIndex acessarTelaPageIndex(){
-        driver.get(getLinkIndex());
-        return this;
-    }
-
-    public PageIndex clickButtonSign(){
-        driver.findElement(getButtonSignin()).click();
-        return this;
-    }
 }

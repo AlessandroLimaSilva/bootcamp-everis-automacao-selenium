@@ -9,10 +9,10 @@ public class PageAuthentication {
     private String linkSignIn = "http://automationpractice.com/index.php?controller=authentication&back=my-account";
     private String linkAccountCreation = "http://automationpractice.com/index.php?controller=authentication&back=my-account#account-creation";
 
-    private By caixaTextoEmail = By.xpath("//*[@id=\'email_create\']");//*[@id="email_create"]
+    private By caixaTextoEmail = By.xpath("//*[@id=\'email_create\']");
     private By buttonCreateAnAccount = By.xpath("//*[@id=\'SubmitCreate\']");
-    private By radioMr = By.xpath("/html/body/div/div[2]/div/div[3]/div/div/form/div[1]/div[1]/div[1]/label");
-    private By radioMs = By.xpath("/html/body/div/div[2]/div/div[3]/div/div/form/div[1]/div[1]/div[2]/label");
+    private By radioMr = By.xpath("//*[@id=\'id_gender1\']");
+    private By radioMs = By.xpath("//*[@id=\'id_gender2\']");
     private By caixaTextoFirstName = By.xpath("//*[@id=\'customer_firstname\']");
     private By caixaTextoLastName = By.xpath("//*[@id=\'customer_lastname\']");
     private By caixaTextoEmailCadastro = By.xpath("//*[@id=\'email\']");
@@ -39,147 +39,6 @@ public class PageAuthentication {
 
 
     public PageAuthentication(WebDriver driver){this.driver = driver;}
-
-    public PageAuthentication clickCreateAccount(){
-        driver.findElement(getButtonCreateAnAccount()).click();
-        return this;
-    }
-
-    public PageAuthentication preencherEmail(String email){
-        driver.findElement(getCaixaTextoEmail()).sendKeys(email);
-        return this;
-    }
-
-    public PageAuthentication clickRadioMr(){
-        driver.findElement(getRadioMr()).click();
-        return this;
-    }
-
-    public PageAuthentication clickRadioMs(){
-        driver.findElement(getRadioMs()).click();
-        return this;
-    }
-
-    public PageAuthentication preencherFirstName(String firstName){
-        driver.findElement(getCaixaTextoFirstName()).sendKeys(firstName);
-        return this;
-    }
-
-    public PageAuthentication preencherLastName(String lastName){
-        driver.findElement(getCaixaTextoLastName()).sendKeys(lastName);
-        return this;
-    }
-
-    public PageAuthentication preencherEmailCadastro(String email){
-        driver.findElement(getCaixaTextoEmailCadastro()).sendKeys(email);
-        return this;
-    }
-
-    public PageAuthentication preencherPassword(String password){
-        driver.findElement(getCaixaTextoPassword()).sendKeys(password);
-        return this;
-    }
-
-    //Precisa refatorar
-    public PageAuthentication clickBirthDateDia(String dia){
-        driver.findElement(getFormularioDateBirthDia()).sendKeys(dia);
-        return this;
-    }
-
-    public PageAuthentication clickBirthDateMes(String mes){
-        driver.findElement(getFormularioDateBirthMes()).sendKeys(mes);
-        return this;
-    }
-
-    public PageAuthentication clickBirthDateAno(String ano){
-        driver.findElement(getFormularioDateBirthAno()).sendKeys(ano);
-        return this;
-    }
-
-
-    public PageAuthentication clickCheckyBoxNewsLetter(){
-        driver.findElement(getCheckyBoxNewsLetter()).click();
-        return this;
-    }
-
-    public PageAuthentication clickCheckBoxSpecialOffer(){
-        driver.findElement(getCheckBoxSpecialOffer()).click();
-        return this;
-    }
-
-    public PageAuthentication preencherFirstName2(String firstName){
-        driver.findElement(getCaixaTextoFirstName2()).sendKeys(firstName);
-        return this;
-    }
-
-    public PageAuthentication preencherLastName2(String lastName){
-        driver.findElement(getCaixaTextoLastName2()).sendKeys(lastName);
-        return this;
-    }
-
-    public PageAuthentication preencherCompany(String company){
-        driver.findElement(getCaixaTextoCompany()).sendKeys(company);
-        return this;
-    }
-
-    public PageAuthentication preencherAddress(String address){
-        driver.findElement(getCaixaTextoAddress()).sendKeys(address);
-        return this;
-    }
-
-    public PageAuthentication preencherAddressLine2(String addressLine){
-        driver.findElement(getCaixaTextoAddressLine2()).sendKeys(addressLine);
-        return this;
-    }
-
-    public PageAuthentication preencherCity(String city){
-        driver.findElement(getCaixaTextoCity()).sendKeys(city);
-        return this;
-    }
-
-
-    public PageAuthentication preencherState(String state){
-         driver.findElement(getComboBoxState()).sendKeys(state);
-         return this;
-     }
-
-
-    public PageAuthentication peencherPostalCode(String postalCode){
-        driver.findElement(getCaixaTextoPostalCode()).sendKeys(postalCode);
-        return this;
-    }
-
-
-    public PageAuthentication preencherCountry(String country){
-        driver.findElement(getComboBoxCountry()).sendKeys(country);
-        return this;
-    }
-
-
-    public PageAuthentication preencherAdditionalInformation(String information){
-        driver.findElement(getCaixaTextoAdditionalInformation()).sendKeys(information);
-        return this;
-    }
-
-    public PageAuthentication preencherHomePhone(String phone){
-        driver.findElement(getCaixaTextoHomePhone()).sendKeys(phone);
-        return this;
-    }
-
-    public PageAuthentication preencherMobilePhone(String mobile){
-        driver.findElement(getCaixaTextoMobilePhone()).sendKeys(mobile);
-        return this;
-    }
-
-    public PageAuthentication preencherLabelAdress(String labelAdress){
-        driver.findElement(getCaixaTextoLabelAddress()).sendKeys(labelAdress);
-        return this;
-    }
-
-    public PageAuthentication clickButtonRegister(){
-        driver.findElement(getButtonRegister()).click();
-        return this;
-    }
 
     public String getLinkSignIn() {
         return linkSignIn;
@@ -221,16 +80,16 @@ public class PageAuthentication {
         return caixaTextoPassword;
     }
 
-    public By getFormularioDateBirthDia() {
-        return formularioDateBirthDia;
+    public By.ByCssSelector getFormularioDateBirthDia() {
+        return (By.ByCssSelector) formularioDateBirthDia;
     }
 
-    public By getFormularioDateBirthMes() {
-        return formularioDateBirthMes;
+    public By.ByCssSelector getFormularioDateBirthMes() {
+        return (By.ByCssSelector) formularioDateBirthMes;
     }
 
-    public By getFormularioDateBirthAno() {
-        return formularioDateBirthAno;
+    public By.ByCssSelector getFormularioDateBirthAno() {
+        return (By.ByCssSelector) formularioDateBirthAno;
     }
 
     public By getCheckyBoxNewsLetter() {
