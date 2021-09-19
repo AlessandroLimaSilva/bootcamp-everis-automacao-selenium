@@ -1,2 +1,6 @@
 # bootcamp-everis-automacao-selenium
-Automação de teste com selenium web-driver
+Automação de teste utilizando as seguintes tecnologias
+selenium web-driver.
+Java.
+Cucumber.
+BDD.
